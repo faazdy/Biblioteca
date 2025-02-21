@@ -1,0 +1,254 @@
+:root {
+    --color1: #d90429;
+    --color2: #ef233c;
+    --color3: #edf2f4;
+    --color4: #8d99ae;
+    --color5: #2b2d42;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    /*
+    background-image: url(images/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;*/
+    background-color: var(--color3);
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 22px;
+    padding: .5em;
+    background-color: #8d99ae1f;
+
+    span {
+        color: var(--color2);
+    }
+}
+
+.burger {
+    position: relative;
+    width: 40px;
+    height: 30px;
+    background: transparent;
+    cursor: pointer;
+    display: none;
+}
+
+.burger input {
+    display: none;
+}
+
+.burger span {
+    display: block;
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: black;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+    top: 0px;
+    transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+    top: 50%;
+    transform: translateY(-50%);
+    transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+    top: 100%;
+    transform-origin: left center;
+    transform: translateY(-100%);
+}
+
+.burger input:checked~span:nth-of-type(1) {
+    transform: rotate(45deg);
+    top: 0px;
+    left: 5px;
+}
+
+.burger input:checked~span:nth-of-type(2) {
+    width: 0%;
+    opacity: 0;
+}
+
+.burger input:checked~span:nth-of-type(3) {
+    transform: rotate(-45deg);
+    top: 28px;
+    left: 5px;
+}
+
+.menu-burger{
+    display: none;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    padding: 1em;
+    left: 0;
+    width: 50%;
+    max-width: 600px;
+    animation: openMenu .2s ease;
+
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+
+        li{
+            list-style: none;
+
+            a{
+                color: var(--color5);
+                text-decoration: none;
+                display: block;
+                padding: 1em;
+                width: 100%;
+                &:hover{
+                    background-color: #8d99ae;
+                }
+            }
+        }
+    }
+}
+
+.main-content {
+    display: flex;
+    gap: 5px;
+}
+
+.main-content aside {
+    flex: 0.5;
+    padding: 1em;
+    min-height: 100vh;
+    border-right: 1px solid #8d99ae2a;
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    ul li {
+        display: block;
+        list-style: none;
+        padding: .5em;
+
+        a {
+            text-decoration: none;
+            color: var(--color5);
+        }
+    }
+
+    .stay-here {
+        background-color: var(--color1);
+        color: var(--color3);
+
+        a {
+            color: var(--color3);
+        }
+    }
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.089);
+    margin: 1em 0;
+}
+
+.main-content main {
+    flex: 5;
+    padding: 1em;
+
+    h1 {
+        font-size: 35px;
+        font-weight: 400;
+    }
+
+    h3 {
+        font-size: 20px;
+        font-weight: 300;
+    }
+}
+
+.cards-container {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card-btn {
+    text-align: center;
+    text-decoration: none;
+}
+
+.card {
+    margin: 0 1em;
+    border-radius: 10px;
+    padding: 1em;
+    background-color: var(--color3);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    h2 {
+        font-size: 19px;
+        color: var(--color5);
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid var(--color5);
+    }
+
+    table {
+        border-radius: 5px;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th {
+        background-color: var(--color2);
+        color: var(--color3);
+    }
+
+    th,
+    td {
+        padding: .5em;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .burger{
+        display: block;
+    }
+    header p{
+        display: none;
+    }
+    .main-content aside {
+        display: none;
+    }
+}
+
+@keyframes openMenu {
+    from{
+        transform: translateY(-5000px);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
